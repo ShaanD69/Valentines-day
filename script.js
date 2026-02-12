@@ -63,8 +63,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (noBtn) {
-    noBtn.addEventListener("click", () => fadeTransition("wrong.html"));
-  }
+  noBtn.addEventListener("click", () => {
+    alert("Wrong answer 😜 Try again!");
+    fadeTransition("index.html");
+  });
+}
 
   if (tryAgainBtn) {
     tryAgainBtn.addEventListener("click", () => fadeTransition("index.html"));
@@ -167,3 +170,4 @@ document.addEventListener("DOMContentLoaded", function () {
 // ===============================
 console.log("%c💖 Made with Love 💖", "font-size: 20px; color: #ec407a; font-weight: bold;");
 console.log("%cHappy Valentine's Day! 💕", "font-size: 16px; color: #f06292;");
+
