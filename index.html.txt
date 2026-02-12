@@ -1,0 +1,64 @@
+<!-- ============================================ -->
+<!-- FILE: index.html -->
+<!-- ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine? 💖</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="floating-hearts"></div>
+    
+    <div class="container center-screen" id="questionScreen">
+        <h1 class="main-question fade-in">Will you be my Valentine? 💖</h1>
+        <div class="button-group">
+            <button class="btn btn-yes" id="yesBtn">Yes 💕</button>
+            <button class="btn btn-no" id="noBtn">No 😅</button>
+        </div>
+    </div>
+
+    <div class="container center-screen hidden" id="wrongChoice">
+        <h1 class="main-question shake">Wrong Choice 😤</h1>
+        <p class="subtitle">Try Again!</p>
+        <button class="btn btn-yes" id="tryAgainBtn">Okay, I choose Yes 💖</button>
+    </div>
+
+    <audio id="clickSound">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSyAzPLZiTYIG2m98OScTgwOUKnl87djHAU7k9n0zX4yBSl+zPLaizsKGGS57OihUBELTKXh8bllHgU6kdnz0YU2Byt8yvPejjwLGV247emfURELTqvk9LplHAU8lNr10YU3BS1+zPPekz0MGmG47+mjUREMUq3l9LpmHQU+ltr10oU4BS5/zfPhlD4NGmS58OqkURQNU6/m9r1oHgVBl9z11Ic5BjGB0PPhlj8NGma78eunUxQOVbHm9r5pHwVDmN331Yc6BzKD0fThmD8OHGi98uypVRUPVrPn+L9rIQZFmt331og7CDaF0/XimiASHWq+8+2rVhUQWLXo+b9rIgZHnN/31og8CTiH1fbjnCITHmy/8+6sVxYQWrbp+r9sIwdJnt/4V4g8CTiH1ffknCMTH22/9O+tWBYRW7fq+8BtJAdKn+D4V4k9Cjl11/fjnSQUH27A9O+tWBcRXLnr+8FuJQdMoOD5WIk+Czt31/jknSQVIG7A9O+uWRcRXbnr/cFuJQdNoOH5WIo/CzyI2PjlnSQVIW/A9e+vWhgSXrrr/cJvJghOoeH6WYo/DD2J2fnlniUWIXDA9e+vWxgSX7zr/sJvJwhPouH6WYo/DD2K2fnmniUWIXHA9fCwWxkTYL3s/sNwJwhQouL6Wos/DT6L2frnniYWInLB9fCwXBoTYr7t/8NwJwhRo+L7W4s/DT6M2frnnyYXI3PB9fGxXRoUY7/t/8RxKAlRo+P7W4xADT+N2vvon8UY" type="audio/wav">
+    </audio>
+
+    <script src="script.js"></script>
+    <script>
+        const questionScreen = document.getElementById('questionScreen');
+        const wrongChoice = document.getElementById('wrongChoice');
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const tryAgainBtn = document.getElementById('tryAgainBtn');
+        const clickSound = document.getElementById('clickSound');
+
+        yesBtn.addEventListener('click', () => {
+            playSound();
+            fadeTransition('intro.html');
+        });
+
+        noBtn.addEventListener('click', () => {
+            playSound();
+            questionScreen.classList.add('hidden');
+            wrongChoice.classList.remove('hidden');
+        });
+
+        tryAgainBtn.addEventListener('click', () => {
+            playSound();
+            fadeTransition('intro.html');
+        });
+
+        function playSound() {
+            clickSound.currentTime = 0;
+            clickSound.play().catch(e => console.log('Sound play failed'));
+        }
+    </script>
+</body>
+</html>

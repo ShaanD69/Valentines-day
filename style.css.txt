@@ -1,0 +1,718 @@
+/* ============================================ */
+/* FILE: style.css */
+/* ============================================ */
+
+/* ===========================
+   RESET AND BASE STYLES
+   =========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 50%, #fce4ec 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: #4a148c;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ===========================
+   CONTAINER LAYOUTS
+   =========================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.center-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+/* ===========================
+   FLOATING HEARTS BACKGROUND
+   =========================== */
+.floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Predefined floating elements */
+.floating-hearts::before,
+.floating-hearts::after {
+    content: '💕';
+    position: absolute;
+    font-size: 30px;
+    animation: float 15s infinite ease-in-out;
+    opacity: 0.3;
+}
+
+.floating-hearts::before {
+    left: 20%;
+    top: 100%;
+    animation-delay: 0s;
+}
+
+.floating-hearts::after {
+    content: '✨';
+    right: 20%;
+    top: 100%;
+    animation-delay: 5s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.4;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ===========================
+   TYPOGRAPHY
+   =========================== */
+.main-question {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: #d81b60;
+    margin-bottom: 50px;
+    text-shadow: 2px 2px 12px rgba(216, 27, 96, 0.3);
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.main-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: #d81b60;
+    margin-bottom: 20px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: #7b1fa2;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+/* ===========================
+   BUTTONS
+   =========================== */
+.button-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    padding: 18px 45px;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-yes {
+    background: linear-gradient(135deg, #f06292 0%, #ec407a 100%);
+    color: white;
+}
+
+.btn-yes:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 30px rgba(236, 64, 122, 0.5);
+}
+
+.btn-yes:active {
+    transform: translateY(-2px) scale(1.02);
+}
+
+.btn-no {
+    background: linear-gradient(135deg, #e1bee7 0%, #ce93d8 100%);
+    color: #4a148c;
+}
+
+.btn-no:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 30px rgba(206, 147, 216, 0.5);
+}
+
+.btn-no:active {
+    transform: translateY(-2px) scale(1.02);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #f06292 0%, #ec407a 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 30px rgba(236, 64, 122, 0.5);
+}
+
+.btn-primary:active {
+    transform: translateY(-2px) scale(1.02);
+}
+
+/* ===========================
+   MESSAGE CARD
+   =========================== */
+.message-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 60px 20px;
+}
+
+.message-card {
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 30px;
+    padding: 60px 50px;
+    max-width: 750px;
+    width: 100%;
+    box-shadow: 0 10px 40px rgba(216, 27, 96, 0.25),
+                0 0 0 1px rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.card-header {
+    margin-bottom: 35px;
+}
+
+.card-header h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: #d81b60;
+    font-weight: 400;
+    text-align: center;
+}
+
+.card-body {
+    margin-bottom: 35px;
+}
+
+.typing-text {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.9;
+    color: #4a148c;
+    text-align: left;
+    min-height: 250px;
+}
+
+.typing-text::after {
+    content: '|';
+    animation: blink 0.8s infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+/* ===========================
+   GALLERY
+   =========================== */
+.gallery-container {
+    padding: 80px 20px;
+    min-height: 100vh;
+}
+
+.gallery-title {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: #d81b60;
+    text-align: center;
+    margin-bottom: 70px;
+    font-weight: 400;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
+    margin-bottom: 50px;
+}
+
+.gallery-item {
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gallery-item:hover {
+    transform: translateY(-12px) scale(1.02);
+}
+
+.photo-placeholder {
+    background: linear-gradient(135deg, #f8bbd0 0%, #f48fb1 100%);
+    border-radius: 25px;
+    padding: 100px 30px 30px;
+    text-align: center;
+    box-shadow: 0 6px 25px rgba(216, 27, 96, 0.3);
+    position: relative;
+    overflow: hidden;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.photo-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+}
+
+.photo-placeholder span {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.photo-placeholder p {
+    font-size: 1.15rem;
+    color: #880e4f;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===========================
+   LIGHTBOX
+   =========================== */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    font-size: 3.5rem;
+    color: white;
+    cursor: pointer;
+    z-index: 10000;
+    transition: transform 0.3s ease, color 0.3s ease;
+    line-height: 1;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-close:hover {
+    transform: rotate(90deg) scale(1.2);
+    color: #f06292;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+    animation: scaleIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.lightbox-content .photo-placeholder {
+    transform: scale(1.1);
+    min-height: 400px;
+}
+
+/* ===========================
+   SURPRISE PAGE
+   =========================== */
+.surprise-body {
+    background: linear-gradient(135deg, #f06292 0%, #ec407a 50%, #d81b60 100%);
+    background-attachment: fixed;
+}
+
+.heart-burst {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: heartBurst 2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    z-index: 0;
+}
+
+.heart-icon {
+    font-size: clamp(8rem, 20vw, 18rem);
+    opacity: 0;
+    animation: burstFade 2.5s ease-out forwards;
+}
+
+@keyframes heartBurst {
+    0% {
+        transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.8) rotate(180deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1) rotate(360deg);
+    }
+}
+
+@keyframes burstFade {
+    0% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 0.12;
+    }
+}
+
+.surprise-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    color: white;
+    text-shadow: 0 0 25px rgba(255, 255, 255, 0.6),
+                 0 0 50px rgba(255, 255, 255, 0.3);
+    margin-bottom: 25px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.surprise-subtitle {
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    color: #fce4ec;
+    margin-bottom: 35px;
+    font-weight: 300;
+}
+
+.surprise-message {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: white;
+    max-width: 650px;
+    line-height: 1.9;
+    margin: 0 auto 50px;
+    padding: 0 20px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ===========================
+   CONFETTI ANIMATION
+   =========================== */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.confetti {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    top: -20px;
+    opacity: 0.8;
+    animation: confettiFall linear infinite;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* ===========================
+   ANIMATION CLASSES
+   =========================== */
+.fade-in {
+    animation: fadeIn 1s ease-in forwards;
+}
+
+.fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.fade-in-scale {
+    animation: fadeInScale 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.scale-in {
+    animation: scaleIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.shake {
+    animation: shake 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.delay-1 {
+    animation-delay: 0.4s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+.delay-2 {
+    animation-delay: 0.8s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+.delay-3 {
+    animation-delay: 1.2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+/* ===========================
+   KEYFRAME ANIMATIONS
+   =========================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-12px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(12px);
+    }
+}
+
+/* ===========================
+   UTILITY CLASSES
+   =========================== */
+.hidden {
+    display: none !important;
+}
+
+/* ===========================
+   RESPONSIVE MEDIA QUERIES
+   =========================== */
+@media (max-width: 768px) {
+    .message-card {
+        padding: 45px 30px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .gallery-container {
+        padding: 60px 20px;
+    }
+
+    .button-group {
+        gap: 15px;
+    }
+
+    .lightbox-close {
+        top: 20px;
+        right: 25px;
+        font-size: 2.5rem;
+    }
+
+    .typing-text {
+        min-height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn {
+        padding: 15px 35px;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .button-group {
+        flex-direction: column;
+        width: 100%;
+        align-items: stretch;
+    }
+
+    .message-card {
+        padding: 35px 25px;
+    }
+
+    .photo-placeholder {
+        padding: 80px 20px 20px;
+        min-height: 250px;
+    }
+
+    .photo-placeholder span {
+        font-size: 3rem;
+    }
+
+    .surprise-message {
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 360px) {
+    .main-question {
+        font-size: 1.6rem;
+    }
+
+    .btn {
+        padding: 12px 30px;
+        font-size: 0.95rem;
+    }
+}
+
+/* ===========================
+   ACCESSIBILITY
+   =========================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus styles for keyboard navigation */
+.btn:focus-visible {
+    outline: 3px solid #d81b60;
+    outline-offset: 4px;
+}
+
+.lightbox-close:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 4px;
+}
