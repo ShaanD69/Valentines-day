@@ -29,35 +29,7 @@
     </audio>
 
     <script src="script.js"></script>
-    <script>
-        const typingText = document.getElementById('typingText');
-        const nextBtn = document.getElementById('nextBtn');
-        const clickSound = document.getElementById('clickSound');
-
-        // EDIT YOUR MESSAGE HERE
-        const message = "From the moment I met you, my world became brighter. Every day with you is a gift, and every moment we share is a treasure I hold close to my heart. You make me laugh when I'm down, you understand me like no one else, and you fill my life with so much love and joy. Being your Valentine isn't just about today—it's about every day I get to spend with you. I love you more than words can say. 💕";
-
-        let index = 0;
-        const typingSpeed = 50;
-
-        function typeWriter() {
-            if (index < message.length) {
-                typingText.textContent += message.charAt(index);
-                index++;
-                setTimeout(typeWriter, typingSpeed);
-            } else {
-                setTimeout(() => {
-                    nextBtn.classList.remove('hidden');
-                }, 500);
-            }
-        }
-
-        setTimeout(typeWriter, 1000);
-
-        nextBtn.addEventListener('click', () => {
-            clickSound.play().catch(e => console.log('Sound play failed'));
-            fadeTransition('gallery.html');
-        });
-    </script>
+   
 </body>
 </html>
+
