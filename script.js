@@ -118,6 +118,34 @@ function addMusicToggle() {
 // addMusicToggle();
 
 // Console message (easter egg)
+
+// ===============================
+// Button navigation logic
+// ===============================
+document.addEventListener("DOMContentLoaded", function () {
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const tryAgainBtn = document.getElementById("tryAgainBtn");
+
+    if (yesBtn) {
+        yesBtn.addEventListener("click", function () {
+            fadeTransition("intro.html"); // goes to next page
+        });
+    }
+
+    if (noBtn) {
+        noBtn.addEventListener("click", function () {
+            fadeTransition("wrong.html"); // goes to wrong choice page
+        });
+    }
+
+    if (tryAgainBtn) {
+        tryAgainBtn.addEventListener("click", function () {
+            fadeTransition("index.html"); // back to first page
+        });
+    }
+});
 console.log('%c💖 Made with Love 💖', 'font-size: 20px; color: #ec407a; font-weight: bold;');
 console.log('%cHappy Valentine\'s Day! 💕', 'font-size: 16px; color: #f06292;');
 ```
+
