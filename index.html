@@ -31,34 +31,7 @@
     </audio>
 
     <script src="script.js"></script>
-    <script>
-        const questionScreen = document.getElementById('questionScreen');
-        const wrongChoice = document.getElementById('wrongChoice');
-        const yesBtn = document.getElementById('yesBtn');
-        const noBtn = document.getElementById('noBtn');
-        const tryAgainBtn = document.getElementById('tryAgainBtn');
-        const clickSound = document.getElementById('clickSound');
-
-        yesBtn.addEventListener('click', () => {
-            playSound();
-            fadeTransition('intro.html');
-        });
-
-        noBtn.addEventListener('click', () => {
-            playSound();
-            questionScreen.classList.add('hidden');
-            wrongChoice.classList.remove('hidden');
-        });
-
-        tryAgainBtn.addEventListener('click', () => {
-            playSound();
-            fadeTransition('intro.html');
-        });
-
-        function playSound() {
-            clickSound.currentTime = 0;
-            clickSound.play().catch(e => console.log('Sound play failed'));
-        }
-    </script>
+    
 </body>
 </html>
+
