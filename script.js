@@ -149,3 +149,33 @@ console.log('%c💖 Made with Love 💖', 'font-size: 20px; color: #ec407a; font
 console.log('%cHappy Valentine\'s Day! 💕', 'font-size: 16px; color: #f06292;');
 ```
 
+// ===============================
+// Index page button logic
+// ===============================
+document.addEventListener("DOMContentLoaded", function () {
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const tryAgainBtn = document.getElementById("tryAgainBtn");
+
+    const questionScreen = document.getElementById("questionScreen");
+    const wrongChoice = document.getElementById("wrongChoice");
+
+    if (yesBtn) {
+        yesBtn.addEventListener("click", function () {
+            fadeTransition("intro.html");
+        });
+    }
+
+    if (noBtn && questionScreen && wrongChoice) {
+        noBtn.addEventListener("click", function () {
+            questionScreen.classList.add("hidden");
+            wrongChoice.classList.remove("hidden");
+        });
+    }
+
+    if (tryAgainBtn) {
+        tryAgainBtn.addEventListener("click", function () {
+            fadeTransition("intro.html");
+        });
+    }
+});
